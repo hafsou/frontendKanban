@@ -1,0 +1,51 @@
+<p>La liste des utilisateurs</p>
+<p>Avant de supprimer un utilisateur, vérifier si celui-ci possède des kanbans, si c'est le cas l'opération échouera.</p>
+
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td><span>{{user.nom}}</span></td>
+      <td><span>{{user.mail}}</span></td>
+      <td>
+        <button (click)="deleteUser(user.mail)">Supprimer</button>
+        <button (click)="showKanbans(user.mail)">Kanbans</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="open(content)">Create</button>
+</div>
+
+<!-- MODALS-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Nouveau utilisateur</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="profileForm" (ngSubmit)="submitAddUser()">
+      <label>
+        Nom:
+        <input type="text" formControlName="nom">
+      </label>
+      <label>
+        Email:
+        <input type="text" formControlName="mail">
+      </label>
+      <button data-dismiss="modal" type="submit" class="btn btn-info">Ajouter</button>
+    </form>
+  </div>
+  <div class="border text-center">
+    </div>
+</ng-template>
+

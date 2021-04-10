@@ -1,0 +1,13 @@
+
+<div *ngFor="let kanban of kanbans">
+    <h2>{{kanban.nom}}</h2>
+<table>
+    <tr>
+    <td *ngFor="let section of kanban.sections">
+        <app-section [section]="section"></app-section>
+    </td>
+</tr>
+</table>
+    </div>
+
+

@@ -1,0 +1,4 @@
+<h2>{{section.nom}}</h2>
+<ul class="sortable connectedSortable" >
+    <li class="card" *ngFor="let fiche of section.fiches">{{fiche.libelle}} {{fiche.utilisateur.nom}}</li>
+</ul>
